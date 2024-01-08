@@ -7,19 +7,19 @@ window.addEventListener("load", () => {
 
 
 
-// addevent on multiple Elements
+// // addevent on multiple Elements
 
-const addeventonelements = function(elements, eventType, callback){
-    for(let i=0, len= elements.length; i<len; i++){
-        elements[i].addEventListener(eventType, callback)
+const addEventOnElements = function(elements, callback){
+    for (let i = 0, len = elements.length; i < len; i++){
+        elements[i].addEventListener("click", callback)
     }
 }
 
-// navbartoggler for mobile
 
-const navbar=document.querySelectorAll("[data-navbar]");
+
+const navbar=document.querySelector("[data-navbar]");
 const navTogglers=document.querySelectorAll("[data-nav-toggler]");
-const overlay=document.querySelectorAll("[data-overlay]");
+const overlay=document.querySelector("[data-overlay]");
 
 const togglenav= function(){
     navbar.classList.toggle("active");
@@ -27,7 +27,9 @@ const togglenav= function(){
     document.body.classList.toggle("nav-active");
 }
 
-addeventonelements(navTogglers, "click", togglenav);
+
+
+addEventOnElements(navTogglers, togglenav);
 
 
 
@@ -39,3 +41,5 @@ window.addEventListener("scroll", function() {
     header.classList[window.scrollY > 100 ? "add": "remove" ]("active");
 
 })
+
+// click
