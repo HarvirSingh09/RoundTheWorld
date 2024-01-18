@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png+X-UA-Compatible">
+    <title>About</title>
+     <!-- google font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+     <!-- css link -->
+     <link rel="stylesheet" href="style.css">
+     <!-- preload images -->
+<link rel="preload" as="image" href="images/hero-banner.png">
+<link rel="preload" as="image" href="images/preloader.svg">
+</head>
+<body>
+    <!-- preloader-->
+    <div class="preloader" data-preloader>
+        <div class="preloader-inner">
+            <img src="./images/preloader.svg" width="50" height="50" alt="Plane" class="img">
+        </div>
+    </div>
+
+
+    <!-- header -->
+    <header class="header" data-header>
+       <div class="container">
+        <a href="#" class="logo">
+            <img src="images/try 2.svg" alt="Logo" width="350" height="100">
+        </a>
+        <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+                <a href="#" class="logo">
+                    <img src="images/try 2.svg" alt="Logo" width="350" height="100">
+                </a>
+                <button class="nav-toggle-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+            <ul class="navbar-list">
+
+                <li class="navbar-item">
+                    <a href="./index.html" class="navbar-link">Home</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="./about.html" class="navbar-link">About</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link">Services</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link">Pricing</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="./contact.html" class="navbar-link">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="header-action">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        
+        </nav>
+      
+        <button class="nav-toggle-btn" aria-label="open-menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <div class="overlay" data-overlay data-nav-toggler></div>
+       </div> 
+    </header>
+    <article>
+        <!-- about content -->
+
+        
+                
+
+
+         <!-- custom js link -->
+    <script src="script.js"></script>
+    <!-- ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
