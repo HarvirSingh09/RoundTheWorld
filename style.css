@@ -41,10 +41,10 @@
     --ff-poppins: 'Poppins', sans-serif;
   
     /* font size */
-    --fontSize-1: 4.2rem;
-    --fontSize-2: 3.6rem;
-    --fontSize-3: 2.5rem;
-    --fontSize-4: 2.4rem;
+    --fontSize-1: 3.7rem;
+    --fontSize-2: 3.1rem;
+    --fontSize-3: 2.3rem;
+    --fontSize-4: 2.1rem;
     --fontSize-5: 2rem;
     --fontSize-6: 1.6rem;
     --fontSize-7: 1.5rem;
@@ -326,8 +326,8 @@ body.nav-active {
     100% {transform: translateY(0);}
 }
 
-.header.logo img{
-    width: 350px;
+.header .logo img{
+    width: 275px;
 }
 
 .nav-toggle-btn {
@@ -337,9 +337,10 @@ body.nav-active {
 .navbar{
     position: fixed;
     top: -15px;
-    right: -355px;
-    max-width: fit-content;
-    max-height: fit-content;
+    right: -375px;
+    max-width: max-content;
+    max-height: max-content;
+    width: 100%;
     width: 780px;
     height: 100vh;
     background-color: white;
@@ -352,8 +353,9 @@ body.nav-active {
 }
 
 .navbar.active{
-    transform: translateX(-355px);
+    transform: translateX(-360px);
     transition-duration: 500ms;
+    
     visibility: visible;
 }
 
@@ -450,19 +452,19 @@ nav .logo.space{
   padding: 0 5px 0 0;
 }
 @media (max-width: 980px){
-  nav .menu-icon,
-  nav .cancel-icon,
-  nav .search-icon{
+  nav.menu-icon,
+  nav.cancel-icon,
+  nav.search-icon{
     margin: 0 20px;
   }
   nav form{
     right: 30px;
   }
 }
-@media (max-width: 350px){
-  nav .menu-icon,
-  nav .cancel-icon,
-  nav .search-icon{
+@media (max-width: 400px){
+  nav.menu-icon,
+  nav.cancel-icon,
+  nav.search-icon{
     margin: 0 10px;
     font-size: 16px;
   }
@@ -488,14 +490,14 @@ nav .logo.space{
 /* hero */
 
 .hero{
-    padding-block-start: 200px;
-    margin-left: 20px;
-    line-height: 3;
+    padding-block-start: 180px;
+    margin-left: 10px;
+    
 }
 
 .hero .container{
     display: grid;
-    gap: 50px;
+    gap: 150px;
 }
 .hero-subtitle{
     background-color: var(--bg-misty-rose);
@@ -503,10 +505,12 @@ nav .logo.space{
     font-size: var(--fontSize-7);
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     max-width: max-content;
     padding: 10px 20px;
     border-radius: var(--radius-pill);
+    line-height: 25px;
+    
     
 }
 
@@ -655,4 +659,66 @@ background-color: var(--bg-red-salsa-alpha-5);
 
 .desti .card-text{
     color:black ;
+}
+
+
+
+
+/* about pagee */
+
+.about-title{
+    padding-block-start: 165px;
+    font-size: var(--fontSize-1);
+    margin-left: 20px;
+    color: var(--text-gunmetal);
+    font-weight: var(--weight-bold);
+    padding-block-end: 25px;
+}
+.titleinabout{
+    display: inline;
+    font-weight: var(--weight-medium);
+    color: var(--bg-ocean-blue);
+    padding-left: 7px;
+    padding-right: 6px;
+    font-size: 1.8rem;
+
+}
+.about-cont{
+    display: inline-flex;
+    padding-top: 20px;
+    color: var(--text-gunmetal);
+    font-size: var(--fontSize-6);
+    font-weight: lighter;
+
+    
+}
+.aboutmain{
+    margin-left: 25px;
+}
+.colonmenu{
+    padding-top: 20px;
+    font-weight: var(--weight-semiBold);
+    color: darkgoldenrod;
+    padding-block-end: 15px;
+}
+.similarto{
+    font-size: var(--fontSize-3);
+    padding-block-start: 15px;
+    color: var(--text-gunmetal);
+    font-weight: var(--weight-bold);
+    padding-block-end: 12px;
+}
+.info{
+    display: inline-flex;
+    color: var(--bg-majorelle-blue);
+    
+}
+.about-conte{
+    display: inline-flex;
+    padding-top: 75px;
+    color: var(--text-gunmetal);
+    font-size: var(--fontSize-6);
+    font-weight: lighter;
+
+    
 }
