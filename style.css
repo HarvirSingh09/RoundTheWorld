@@ -722,3 +722,36 @@ background-color: var(--bg-red-salsa-alpha-5);
 
     
 }
+/* New CSS styles for Services Section */
+
+.services-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.services-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.services-list li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.services-list h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.services-list p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
