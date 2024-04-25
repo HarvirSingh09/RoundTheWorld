@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Packages</title>
     <style>
-        /* Add styles here to style the application */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,12 +16,12 @@
 
         .pricing-section {
             padding: 50px 0;
-            text-align: center;
         }
-        .heading{
-            
+
+        .heading {
             text-align: left;
         }
+
         .package-container {
             display: flex;
             justify-content: space-around;
@@ -57,7 +56,6 @@
             margin-bottom: 5px;
         }
 
-        /* Additional CSS rules */
         form {
             display: flex;
             flex-direction: column;
@@ -102,15 +100,15 @@
         .package-card button:hover {
             background-color: #0056b3;
         }
-        </style>
+    </style>
 </head>
 
 <body>
     <div class="heading">
-    <h2>Pricing</h2>
+        <h2>Pricing</h2>
     </div>
+
     <div class="pricing-section">
-       
         <div class="package-container">
             <!-- Package cards will be added here by JavaScript -->
         </div>
@@ -144,17 +142,14 @@
             const packageCard = document.createElement('div');
             packageCard.classList.add('package-card');
             
-            // Package title
             const title = document.createElement('h3');
             title.textContent = pkg.title;
             packageCard.appendChild(title);
             
-            // Package price
             const price = document.createElement('p');
             price.textContent = Price: $${pkg.price};
             packageCard.appendChild(price);
             
-            // Package services
             const servicesList = document.createElement('ul');
             pkg.services.forEach(service => {
                 const listItem = document.createElement('li');
@@ -163,13 +158,11 @@
             });
             packageCard.appendChild(servicesList);
             
-            // 'Book Now' button
             const bookNowButton = document.createElement('button');
             bookNowButton.textContent = 'Book Now';
             bookNowButton.addEventListener('click', () => toggleForm(packageCard));
             packageCard.appendChild(bookNowButton);
             
-            // Create form and attach it to the package card
             const form = createForm(pkg.price);
             packageCard.appendChild(form);
             
@@ -185,7 +178,6 @@
             const form = document.createElement('form');
             form.style.display = 'none';
             
-            // Form fields
             const fields = [
                 { label: 'Name:', type: 'text', required: true },
                 { label: 'Email:', type: 'email', required: true },
@@ -203,10 +195,10 @@
                 form.appendChild(input);
             });
             
-            // Budget
             const budgetLabel = document.createElement('label');
             budgetLabel.textContent = 'Budget:';
             form.appendChild(budgetLabel);
+            
             const budgetInput = document.createElement('input');
             budgetInput.type = 'range';
             budgetInput.min = '0';
@@ -219,7 +211,6 @@
             budgetText.textContent = Budget: $${Math.round(price * (budgetInput.value / 100))};
             form.appendChild(budgetText);
             
-            // Hotel stars
             const starsLabel = document.createElement('label');
             starsLabel.textContent = 'Hotel Stars:';
             form.appendChild(starsLabel);
@@ -234,7 +225,6 @@
             });
             form.appendChild(starsSelect);
             
-            // Submit button
             const submitButton = document.createElement('button');
             submitButton.type = 'submit';
             submitButton.textContent = 'Submit';
@@ -253,7 +243,6 @@
         function handleSubmit(event, form, packageCard) {
             event.preventDefault();
             
-            // Get form data
             const name = form.elements[0].value;
             const email = form.elements[1].value;
             const phone = form.elements[2].value;
@@ -261,33 +250,27 @@
             const budget = form.elements[4].value;
             const stars = form.elements[5].value;
             
-            // Handle form data (e.g., send it to a backend server)
             console.log('Form Submitted:', { name, email, phone, place, budget, stars });
             
-            // Reset form fields
             form.reset();
             
-            // Hide form
             form.style.display = 'none';
             
-            // Display thank you message
             const thankYouMessage = document.createElement('p');
             thankYouMessage.classList.add('thank-you-message');
-            thankYouMessage.textContent = 'Thank You for choosing our website for traveling. We will contact you within an hour.';
+            thankYouMessage.textContent = 'Thank you for choosing our website for traveling. We will contact you within an hour.';
             packageCard.appendChild(thankYouMessage);
         }
 
         function init() {
             const packageContainer = document.querySelector('.package-container');
             
-            // Create package cards and add them to the container
             packagesData.forEach(pkg => {
                 const packageCard = createPackageCard(pkg);
                 packageContainer.appendChild(packageCard);
             });
         }
 
-        // Initialize the application
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
