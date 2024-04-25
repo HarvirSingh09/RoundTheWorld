@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages</title>
+    <style>
+        /* Add styles here to style the application */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: hsl(0, 100%, 98%);
+        }
+
+        .pricing-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+        .heading{
+            
+            text-align: left;
+        }
+        .package-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .package-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .package-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .package-card p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .package-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .package-card li {
+            margin-bottom: 5px;
+        }
+
+        /* Additional CSS rules */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .thank-you-message {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .package-card button {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .package-card button:hover {
+            background-color: #0056b3;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="heading">
+    <h2>Pricing</h2>
+    </div>
+    <div class="pricing-section">
+       
+        <div class="package-container">
+            <!-- Package cards will be added here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const packagesData = [
+            {
+                title: 'Domestic Gold',
+                price: 500,
+                services: ['Flight Ticket', 'Hotel Accommodation', 'City Tours']
+            },
+            {
+                title: 'Domestic Premium',
+                price: 800,
+                services: ['Flight Ticket', 'Hotel Accommodation', 'City Tours', 'Private Guide']
+            },
+            {
+                title: 'International Gold',
+                price: 1000,
+                services: ['International Flight Ticket', 'Hotel Accommodation', 'City Tours', 'Travel Insurance']
+            },
+            {
+                title: 'International Premium',
+                price: 1500,
+                services: ['International Flight Ticket', 'Hotel Accommodation', 'City Tours', 'Travel Insurance', 'Private Car']
+            }
+        ];
+
+        function createPackageCard(pkg) {
+            const packageCard = document.createElement('div');
+            packageCard.classList.add('package-card');
+            
+            // Package title
+            const title = document.createElement('h3');
+            title.textContent = pkg.title;
+            packageCard.appendChild(title);
+            
+            // Package price
+            const price = document.createElement('p');
+            price.textContent = Price: $${pkg.price};
+            packageCard.appendChild(price);
+            
+            // Package services
+            const servicesList = document.createElement('ul');
+            pkg.services.forEach(service => {
+                const listItem = document.createElement('li');
+                listItem.textContent = service;
+                servicesList.appendChild(listItem);
+            });
+            packageCard.appendChild(servicesList);
+            
+            // 'Book Now' button
+            const bookNowButton = document.createElement('button');
+            bookNowButton.textContent = 'Book Now';
+            bookNowButton.addEventListener('click', () => toggleForm(packageCard));
+            packageCard.appendChild(bookNowButton);
+            
+            // Create form and attach it to the package card
+            const form = createForm(pkg.price);
+            packageCard.appendChild(form);
+            
+            return packageCard;
+        }
+
+        function toggleForm(packageCard) {
+            const form = packageCard.querySelector('form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function createForm(price) {
+            const form = document.createElement('form');
+            form.style.display = 'none';
+            
+            // Form fields
+            const fields = [
+                { label: 'Name:', type: 'text', required: true },
+                { label: 'Email:', type: 'email', required: true },
+                { label: 'Phone Number:', type: 'tel', required: true },
+                { label: 'Place to Travel:', type: 'text', required: true }
+            ];
+            
+            fields.forEach(field => {
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                const input = document.createElement('input');
+                input.type = field.type;
+                input.required = field.required;
+                form.appendChild(label);
+                form.appendChild(input);
+            });
+            
+            // Budget
+            const budgetLabel = document.createElement('label');
+            budgetLabel.textContent = 'Budget:';
+            form.appendChild(budgetLabel);
+            const budgetInput = document.createElement('input');
+            budgetInput.type = 'range';
+            budgetInput.min = '0';
+            budgetInput.max = '100';
+            budgetInput.value = '50';
+            budgetInput.addEventListener('input', () => updateBudgetText(form, budgetInput, price));
+            form.appendChild(budgetInput);
+            
+            const budgetText = document.createElement('p');
+            budgetText.textContent = Budget: $${Math.round(price * (budgetInput.value / 100))};
+            form.appendChild(budgetText);
+            
+            // Hotel stars
+            const starsLabel = document.createElement('label');
+            starsLabel.textContent = 'Hotel Stars:';
+            form.appendChild(starsLabel);
+            
+            const starsSelect = document.createElement('select');
+            const options = ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'];
+            options.forEach((option, index) => {
+                const optionElement = document.createElement('option');
+                optionElement.value = index + 1;
+                optionElement.textContent = option;
+                starsSelect.appendChild(optionElement);
+            });
+            form.appendChild(starsSelect);
+            
+            // Submit button
+            const submitButton = document.createElement('button');
+            submitButton.type = 'submit';
+            submitButton.textContent = 'Submit';
+            form.appendChild(submitButton);
+            
+            form.addEventListener('submit', event => handleSubmit(event, form, packageCard));
+            
+            return form;
+        }
+
+        function updateBudgetText(form, budgetInput, price) {
+            const budgetText = form.querySelector('p');
+            budgetText.textContent = Budget: $${Math.round(price * (budgetInput.value / 100))};
+        }
+
+        function handleSubmit(event, form, packageCard) {
+            event.preventDefault();
+            
+            // Get form data
+            const name = form.elements[0].value;
+            const email = form.elements[1].value;
+            const phone = form.elements[2].value;
+            const place = form.elements[3].value;
+            const budget = form.elements[4].value;
+            const stars = form.elements[5].value;
+            
+            // Handle form data (e.g., send it to a backend server)
+            console.log('Form Submitted:', { name, email, phone, place, budget, stars });
+            
+            // Reset form fields
+            form.reset();
+            
+            // Hide form
+            form.style.display = 'none';
+            
+            // Display thank you message
+            const thankYouMessage = document.createElement('p');
+            thankYouMessage.classList.add('thank-you-message');
+            thankYouMessage.textContent = 'Thank You for choosing our website for traveling. We will contact you within an hour.';
+            packageCard.appendChild(thankYouMessage);
+        }
+
+        function init() {
+            const packageContainer = document.querySelector('.package-container');
+            
+            // Create package cards and add them to the container
+            packagesData.forEach(pkg => {
+                const packageCard = createPackageCard(pkg);
+                packageContainer.appendChild(packageCard);
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>
