@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews</title>
+<style>
+/* Apply root variables for colors, typography, spacing, etc. */
+:root {
+    --bg-lavender-blush: hsl(0, 100%, 98%);
+    --text-light-coral: hsl(357, 96%, 73%);
+    --text-gunmetal: hsl(209, 40%, 14%);
+    --text-majorelle-blue: hsl(249, 95%, 63%);
+    --bg-gainsboro: hsl(0, 0%, 85%);
+    --bg-majorelle-blue: hsl(249, 95%, 63%);
+    --bg-ocean-blue: hsl(249, 63%, 54%);
+    --border-gainsboro: hsl(0, 1%, 85%);
+    --ff-poppins: 'Poppins', sans-serif;
+    --fontSize-6: 1.6rem;
+    --weight-semiBold: 600;
+    --radius-pill: 200px;
+    --transition-1: 250ms ease;
+}
+
+/* Apply reset styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply body styles */
+body {
+    background-color: var(--bg-lavender-blush);
+    color: var(--text-gunmetal);
+    font-family: var(--ff-poppins);
+    font-size: var(--fontSize-6);
+    line-height: 1.8;
+}
+
+/* Apply reused styles */
+li {
+    list-style: none;
+}
+
+a,
+img,
+span,
+input,
+button,
+ion-icon {
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+}
+
+input,
+button {
+    background: none;
+    border: none;
+    font: inherit;
+}
+
+input {
+    width: calc(100% - 40px);
+    outline: none;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid var(--bg-gainsboro);
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--bg-majorelle-blue);
+    color: var(--text-light-coral);
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--bg-ocean-blue);
+}
+
+ion-icon {
+    pointer-events: none;
+}
+
+address {
+    font-style: normal;
+}
+
+/* Apply container style */
+.container {
+    padding-inline: 16px;
+}
+
+/* Apply button styles */
+.btn {
+    height: 50px;
+    color: var(--text-light-coral);
+    padding-inline: 30px;
+    border-radius: var(--radius-pill);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: max-content;
+    transition: var(--transition-1);
+}
+
+.btn-primary {
+    background-color: var(--bg-majorelle-blue);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background-color: var(--bg-ocean-blue);
+}
+
+/* Apply section styles */
+.review-section {
+    margin-bottom: 40px; /* Add spacing between sections */
+    background-color: var(--bg-gainsboro); /* Set background color */
+    border-radius: 10px; /* Add border radius */
+    padding: 20px; /* Add padding */
+    text-align: left; /* Align review title left */
+}
+
+.review-section h2 {
+    color: var(--text-majorelle-blue); /* Change section title color */
+}
+
+.review-section ul {
+    margin-block: 20px;
+}
+
+/* Apply button secondary styles */
+.btn-secondary {
+    background-color: var(--bg-red-salsa);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    background-color: var(--bg-english-vermillion);
+}
+
+</style>
+</head>
+<body>
+
+<h1 style="text-align: left;">Reviews</h1>
+
+<!-- Create review sections for each location -->
+<div class="review-section" id="new-york">
+  <h2>New York Reviews</h2>
+  <ul id="new-york-reviews"></ul>
+  <input type="text" id="new-york-input" placeholder="Write a review">
+  <button onclick="addReview('new-york')">Add Review</button>
+</div>
+
+<div class="review-section" id="delhi">
+  <h2>Delhi Reviews</h2>
+  <ul id="delhi-reviews"></ul>
+  <input type="text" id="delhi-input" placeholder="Write a review">
+  <button onclick="addReview('delhi')">Add Review</button>
+</div>
+
+<div class="review-section" id="dubai">
+  <h2>Dubai Reviews</h2>
+  <ul id="dubai-reviews"></ul>
+  <input type="text" id="dubai-input" placeholder="Write a review">
+  <button onclick="addReview('dubai')">Add Review</button>
+</div>
+
+<div class="review-section" id="maldives">
+  <h2>Maldives Reviews</h2>
+  <ul id="maldives-reviews"></ul>
+  <input type="text" id="maldives-input" placeholder="Write a review">
+  <button onclick="addReview('maldives')">Add Review</button>
+</div>
+
+<div class="review-section" id="thailand">
+  <h2>Thailand Reviews</h2>
+  <ul id="thailand-reviews"></ul>
+  <input type="text" id="thailand-input" placeholder="Write a review">
+  <button onclick="addReview('thailand')">Add Review</button>
+</div>
+
+<div class="review-section" id="istanbul">
+  <h2>Istanbul Reviews</h2>
+  <ul id="istanbul-reviews"></ul>
+  <input type="text" id="istanbul-input" placeholder="Write a review">
+  <button onclick="addReview('istanbul')">Add Review</button>
+</div>
+
+<script>
+// Function to add review dynamically
+function addReview(location) {
+  var inputElement = document.getElementById(location + '-input');
+  var reviewText = inputElement.value;
+  if (reviewText.trim() === '') {
+    alert('Please enter a review');
+    return;
+  }
+  var reviewsList = document.getElementById(location + '-reviews');
+  var userName = prompt('Please enter your name:');
+  if (!userName) return; // If user cancels prompt
+  var reviewNumber = reviewsList.getElementsByTagName('li').length + 1;
+  var formattedReview = '[' + reviewNumber + '].) ' + userName + ' - ' + reviewText;
+  var li = document.createElement('li');
+  li.textContent = formattedReview;
+  reviewsList.appendChild(li);
+  inputElement.value = '';
+}
+</script>
+
+</body>
+</html>
