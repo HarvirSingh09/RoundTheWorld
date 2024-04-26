@@ -147,7 +147,7 @@
             packageCard.appendChild(title);
             
             const price = document.createElement('p');
-            price.textContent = Price: $${pkg.price};
+            price.textContent = `Price: $${pkg.price}`;
             packageCard.appendChild(price);
             
             const servicesList = document.createElement('ul');
@@ -208,7 +208,7 @@
             form.appendChild(budgetInput);
             
             const budgetText = document.createElement('p');
-            budgetText.textContent = Budget: $${Math.round(price * (budgetInput.value / 100))};
+            budgetText.textContent = `Budget: $${Math.round(price * (budgetInput.value / 100))}`;
             form.appendChild(budgetText);
             
             const starsLabel = document.createElement('label');
@@ -237,7 +237,7 @@
 
         function updateBudgetText(form, budgetInput, price) {
             const budgetText = form.querySelector('p');
-            budgetText.textContent = Budget: $${Math.round(price * (budgetInput.value / 100))};
+            budgetText.textContent = `Budget: $${Math.round(price * (budgetInput.value / 100))}`;
         }
 
         function handleSubmit(event, form, packageCard) {
